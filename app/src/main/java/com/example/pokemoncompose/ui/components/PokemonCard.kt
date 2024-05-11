@@ -37,7 +37,7 @@ fun PokemonCard(
         )
         Column(modifier = Modifier.padding(8.dp)) {
             Text(
-                text = item.name,
+                text = item.name.replaceFirstChar { it.uppercaseChar() },
                 fontWeight = FontWeight.Bold,
                 style = MaterialTheme.typography.titleLarge,
             )

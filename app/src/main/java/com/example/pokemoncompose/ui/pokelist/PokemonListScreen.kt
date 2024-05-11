@@ -28,7 +28,7 @@ fun PokemonListScreen(
     val list = pokemonViewModel.pokemonList.collectAsLazyPagingItems()
     Box(modifier = Modifier.fillMaxSize()) {
         when (list.loadState.refresh) {
-            is LoadState.Error -> ErrorScreen()
+            is LoadState.Error -> ErrorScreen { list.refresh() }
             is LoadState.Loading -> CircularProgressIndicator(
                 modifier = modifier
                     .width(128.dp)

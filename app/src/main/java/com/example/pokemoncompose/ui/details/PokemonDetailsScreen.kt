@@ -33,10 +33,12 @@ fun PokemonDetailsScreen(
     val uiState by viewModel.uiState.collectAsState()
     viewModel.fetchData(name)
     when (val s = uiState) {
-        is DetailsUiState.Error -> ErrorScreen()
+        is DetailsUiState.Error -> ErrorScreen { viewModel.fetchData(name) }
         is DetailsUiState.Idle -> Column {
             Column(modifier = Modifier.fillMaxSize()) {
-                SpriteGallery(imageUrls = s.pokemon.imageUrls, name = name)
+                SpriteGallery(
+                    imageUrls = s.pokemon.imageUrls,
+                    name = name.replaceFirstChar { it.uppercaseChar() })
                 Row {
                     PokemonParameter(
                         title = "Height",
@@ -50,7 +52,13 @@ fun PokemonDetailsScreen(
                     )
                 }
                 Spacer(modifier = Modifier.weight(1f))
-                Button(onClick = { navController.popBackStack() }, shape = MaterialTheme.shapes.small, modifier = modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp)) {
+                Button(
+                    onClick = { navController.popBackStack() },
+                    shape = MaterialTheme.shapes.small,
+                    modifier = modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 8.dp)
+                ) {
                     Text("Go back", style = MaterialTheme.typography.displaySmall)
                 }
             }

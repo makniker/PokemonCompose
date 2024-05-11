@@ -4,7 +4,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.pokemoncompose.data.models.Pokemon
 
-const val LOAD_SIZE = 8
+const val LOAD_SIZE = 10
 
 class PokemonPagingSource(private val pokeService: PokeService) : PagingSource<Int, Pokemon>() {
     override fun getRefreshKey(state: PagingState<Int, Pokemon>): Int? = state.anchorPosition
