@@ -17,7 +17,7 @@ fun PokemonImage(
     AsyncImage(
         model = url,
         modifier = modifier,
-        contentScale = ContentScale.Fit,
+        contentScale = ContentScale.FillWidth,
         contentDescription = contentDescription,
     )
 }

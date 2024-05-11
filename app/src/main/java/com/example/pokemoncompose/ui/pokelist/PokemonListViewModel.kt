@@ -23,44 +23,31 @@ class PokemonListViewModel @Inject constructor(
         repository.getPokemonList()
             .cachedIn(viewModelScope).map { pagingData ->
                 pagingData.map { pokemon ->
-                    PokemonListUiModel(
-                        pokemon.name,
-                        pokemon.types.map { it.type.name },
-                        pokemon.sprites.frontDefault
-                    )
+                    if (pokemon.sprites.frontDefault != null) {
+                        PokemonListUiModel(
+                            pokemon.id.toString(),
+                            pokemon.types.map { it.type.name },
+                            pokemon.sprites.frontDefault
+                        )
+                    } else if (pokemon.sprites.frontFemale != null) {
+                        PokemonListUiModel(
+                            pokemon.id.toString(),
+                            pokemon.types.map { it.type.name },
+                            pokemon.sprites.frontFemale
+                        )
+                    } else if (pokemon.sprites.frontShiny != null) {
+                        PokemonListUiModel(
+                            pokemon.id.toString(),
+                            pokemon.types.map { it.type.name },
+                            pokemon.sprites.frontShiny
+                        )
+                    } else {
+                        PokemonListUiModel(
+                            pokemon.id.toString(),
+                            pokemon.types.map { it.type.name },
+                            pokemon.sprites.frontShinyFemale!!
+                        )
+                    }
                 }
             }
-
-
-    private var cachedPokemonList = listOf<PokemonListUiModel>(
-        PokemonListUiModel(
-            "aboba",
-            listOf("fire", "water"),
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
-        ),
-        PokemonListUiModel(
-            "aboba",
-            listOf("fire", "water"),
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
-        ),
-        PokemonListUiModel(
-            "aboba",
-            listOf("fire", "water"),
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
-        ),
-        PokemonListUiModel(
-            "aboba",
-            listOf("fire", "water"),
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
-        ),
-        PokemonListUiModel(
-            "aboba",
-            listOf("fire", "water"),
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
-        )
-    )
-
-    init {
-
-    }
 }

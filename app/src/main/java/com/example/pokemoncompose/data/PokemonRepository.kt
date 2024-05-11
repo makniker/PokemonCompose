@@ -11,7 +11,7 @@ import javax.inject.Inject
 class PokemonRepository @Inject constructor(private val pokeService: PokeService) {
     fun getPokemonList() = Pager(
         config = PagingConfig(
-            pageSize = LOAD_SIZE,  enablePlaceholders = false
+            pageSize = LOAD_SIZE,  enablePlaceholders = true
         ), pagingSourceFactory = {
             PokemonPagingSource(pokeService)
         }
