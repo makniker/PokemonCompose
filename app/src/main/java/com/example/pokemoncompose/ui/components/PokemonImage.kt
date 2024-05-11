@@ -1,11 +1,11 @@
 package com.example.pokemoncompose.ui.components
 
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import coil.compose.AsyncImage
+import com.example.pokemoncompose.R
 
 
 @Composable
@@ -19,5 +19,6 @@ fun PokemonImage(
         modifier = modifier,
         contentScale = ContentScale.FillWidth,
         contentDescription = contentDescription,
+        placeholder = painterResource(R.drawable.ic_pokeball)
     )
 }

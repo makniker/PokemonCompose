@@ -3,11 +3,8 @@ package com.example.pokemoncompose.data
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.pokemoncompose.data.models.Pokemon
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
-const val LOAD_SIZE = 10
+const val LOAD_SIZE = 8
 
 class PokemonPagingSource(private val pokeService: PokeService) : PagingSource<Int, Pokemon>() {
     override fun getRefreshKey(state: PagingState<Int, Pokemon>): Int? = state.anchorPosition

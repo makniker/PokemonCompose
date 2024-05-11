@@ -110,3 +110,4 @@ fun PokemonComposeTheme(
         colorScheme = colors, typography = typography, shapes = shapes, content = content
     )
 }
+
