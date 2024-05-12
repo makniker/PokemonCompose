@@ -1,5 +1,6 @@
-package com.example.pokemoncompose.data.models
+package com.example.pokemoncompose.data.network
 
+import com.example.pokemoncompose.data.network.Result
 import com.google.gson.annotations.SerializedName
 
 data class PokemonList(

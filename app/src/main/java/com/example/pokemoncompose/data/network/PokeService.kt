@@ -1,7 +1,5 @@
-package com.example.pokemoncompose.data
+package com.example.pokemoncompose.data.network
 
-import com.example.pokemoncompose.data.models.Pokemon
-import com.example.pokemoncompose.data.models.PokemonList
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -16,5 +14,5 @@ interface PokeService {
     @GET("pokemon/{name}")
     suspend fun getPokemonInfo(
         @Path("name") name: String
-    ): Pokemon
+    ): PokemonNetworkModel
 }
