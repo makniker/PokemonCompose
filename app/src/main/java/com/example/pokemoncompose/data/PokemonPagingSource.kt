@@ -10,14 +10,20 @@ import com.example.pokemoncompose.ui.mapNetworkModelToPokemon
 
 const val LOAD_SIZE = 10
 
-class PokemonPagingSource(private val pokeService: PokeService, private val dao: PokemonDao) : PagingSource<Int, Pokemon>() {
+class PokemonPagingSource(private val pokeService: PokeService, private val dao: PokemonDao) :
+    PagingSource<Int, Pokemon>() {
     override fun getRefreshKey(state: PagingState<Int, Pokemon>): Int? = state.anchorPosition
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Pokemon> {
         val currentPage = params.key ?: 0
         try {
-            val result =
-                pokeService.getPokemonList(LOAD_SIZE, LOAD_SIZE * currentPage)
+            val result = pokeService.getPokemonList(LOAD_SIZE, LOAD_SIZE * currentPage)
+            /*
+                Получаем чанк с именами следующих покемонов,
+                проверяем, есть ли они в бд и отдаем их.
+                Если нет, то запрашиваем полную инфу с сервера,
+                кладем ее в бд.
+            */
             val list = result.results.map {
                 val dbRes = dao.getPokemon(it.name)
                 if (dbRes == null) {

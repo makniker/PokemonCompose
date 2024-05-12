@@ -1,7 +1,5 @@
 package com.example.pokemoncompose.data.network
 
-import com.example.pokemoncompose.data.network.Sprites
-import com.example.pokemoncompose.data.network.Type
 import com.google.gson.annotations.SerializedName
 
 data class PokemonNetworkModel(

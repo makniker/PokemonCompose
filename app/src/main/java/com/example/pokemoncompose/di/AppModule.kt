@@ -2,9 +2,8 @@ package com.example.pokemoncompose.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.pokemoncompose.data.network.PokeService
 import com.example.pokemoncompose.data.cache.PokemonDatabase
-import com.example.pokemoncompose.data.cache.Converters
+import com.example.pokemoncompose.data.network.PokeService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -4,6 +4,12 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+/*
+    Копия класса Pokemon, сделал отдельную модель для кеша,
+    тк возможно в будущем понадобиться хранить в бд новые поля,
+    не предусмотренные моделью, которую отдаем из репозитория
+*/
+
 @Entity(tableName = "PokemonCache")
 class PokemonCacheModel(
     @PrimaryKey val name: String,
